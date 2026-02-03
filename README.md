@@ -1,53 +1,68 @@
-<div align="center" id="sglangtop">
-<img src="./assets/logo.png" alt="logo" width="400" margin="10px"></img>
+### EAGLE-3: Scaling up Inference Acceleration of Large Language Models via Training-Time Test
 
-[![documentation](https://img.shields.io/badge/📖-Documentation-red.svg?style=flat)](https://docs.sglang.ai/SpecForge/)
-[![github badge](https://img.shields.io/badge/📃%20LMSYS-Blog-black.svg?style=flat)](https://lmsys.org/blog/2025-07-25-spec-forge/)
-[![slack badge](https://img.shields.io/badge/Slack-join-blueviolet?logo=slack&amp)](https://sgl-fru7574.slack.com/archives/C09784E3EN6)
-[![SGLang Eagle3](https://img.shields.io/badge/🤗%20Hugging%20Face-SGLang%20Eagle3-yellow.svg?style=flat)](https://huggingface.co/collections/lmsys/eagle-3-6886b2329f3998a8bc23f8ed)
-[![license](https://img.shields.io/badge/License-MIT%202.0-blue)](./LICENSE)
+[gpt-oss-120b-eagle3-aimo3](https://huggingface.co/wenliang1990/gpt-oss-120b-eagle3-aimo3)
 
-</div>
+Our code repository is a secondary development based on [SpecForge](https://github.com/sgl-project/SpecForge). We optimized GPU memory usage, enabling **gpt-oss-120b** to train with context lengths beyond **40K** on 8×H800 GPUs. The original repository could not reliably support long-context training on eight H800s—especially for gpt-oss-120b—where the maximum context length was typically around 16K. With our optimizations, the trainable context length is extended to 40K+, and training throughput is significantly improved.
 
-## 📍 Overview
-
-SpecForge is an ecosystem project developed by the SGLang team. It is a framework for training speculative decoding models so that you can smoothly port them over to the SGLang serving framework to speed up your inference.
-
-We have seen many open-source projects for speculative decoding, but most of them are not well-maintained or not directly compatible with SGLang. We prepared this project because we wish that the open-source community can enjoy a speculative decoding framework that is
-- regularly maintained by the SpecForge team: the code is runnable out-of-the-box
-- directly compatible with SGLang: there is no additional efforts for porting to SGLang
-- provide performant training capabilities: we provided online/offline/tensor-parallel/FSDP to suit your needs
+| File Name                                          | Original Implementation                                                                                                              | New Implementation                                                                                                                   | Key Benefit                                                                                           |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `specforge/core/eagle.py`                          | Soft distillation: slice teacher logits from `[B, T, V]` to `[B, T, Vd]`, then apply Softmax to obtain `target_p` (3D distribution). | Optional hard distillation (recommended): use only the teacher’s top-1 token to produce `labels` `[B, T]` (2D) plus `position_mask`. | Target tensor size reduced from **O(B·T·Vd)** to **O(B·T)**, significantly lowering GPU memory usage. |
+| `specforge/data/parse.py`                          | Python tool outputs are included in loss computation.                                                                                | Python tool outputs are excluded from loss computation.                                                                              | Avoids optimizing on tool-generated outputs (more stable/cleaner training signal).                    |
+| `specforge/modeling/target/eagle3_target_model.py` | Targets store teacher logits `[B, T, V]` (SGLang directly passes logits; HF/Custom also return logits).                              | Targets store teacher top-1 token IDs `[B, T]` (int64); HF/Custom/SGLang all convert logits to argmax token IDs.                     | Memory reduced from **O(B·T·V)** to **O(B·T)**.                                                       |
 
 
-Check out [**our documentation**](https://docs.sglang.ai/SpecForge/) to get started.
+### Evaluation
+We uploaded the trained model to Hugging Face and compared it against gpt-oss-120b, as shown in the table below.
 
-## 🎉 News
+| throughput(gpt-oss-120b) | throughput(gpt-oss-120b-eagle3-aimo3) | speedup | concurrency |
+| ------------------------ | ------------------------------------ | ------- | ----------- |
+| 776.514                  | 1059.43                              | 36.40%  | 8           |
+| 686.717                  | 956.431                              | 39.30%  | 7           |
+| 596.596                  | 851.647                              | 42.80%  | 6           |
+| 518.76                   | 680.951                              | 31.30%  | 5           |
+| 465.702                  | 657.682                              | 41.20%  | 4           |
+| 379.48                   | 541.304                              | 42.60%  | 3           |
+| 297.553                  | 422.232                              | 41.90%  | 2           |
+| 190.023                  | 268.132                              | 41.10%  | 1           |
 
-- [2025-08] 🔔 SpecForge is listed as a [flagship project](https://lmsys.org/about/) in LMSYS. Congratulations to the SpecForge team!
-- [2025-08] 🔥 SpecForge powered the Eagle3 draft model for GPT-OSS. Check out the blog at [LMSYS.org](https://lmsys.org/blog/2025-08-27-gpt-oss/)
-- [2025-07] 🔥 SpecForge is released together with Llama4-Eagle3 checkpoints. Check out our blog at [LMSYS.org](https://lmsys.org/blog/2025-07-25-spec-forge/)
+### Serving
 
-## ✨ Acknowledgements
+```text
+TP="${TP:-8}"
+MAX_NUM_SEQS="${MAX_NUM_SEQS:-256}"
+GPU_MEMORY_UTILIZATION="${GPU_MEMORY_UTILIZATION:-0.9}"
+HOST="${HOST:-0.0.0.0}"
+PORT="${PORT:-8000}"
+MAX_LEN="${MAX_LEN:-40960}"
+STREAM_INTERVAL="${STREAM_INTERVAL:-1}"
 
-<img src="./assets/acknowledgements.png" alt="acknowledgements"></img>
+# ====== speculative config (JSON) ======
+SPECULATIVE_CONFIG='{"method":"eagle3","model":"gpt-oss-120b-eagle3-aimo3","num_speculative_tokens":3,"draft_tensor_parallel_size":1}'
 
-We would like to express our sincere gratitude to the official EAGLE team, especially Hongyang Zhang and Yuhui Li, for their invaluable contributions and support. Our thanks also go to the NVIDIA team—particularly Avery H and Izzy Putterman—and to the Google team, especially Ying Wang, for their insightful discussions and generous assistance throughout the project.
+exec python -m vllm.entrypoints.openai.api_server \
+  --model openai/gpt-oss-120b \
+  --served-model-name gpt-oss \
+  --tensor-parallel-size "$TP" \
+  --max-num-seqs "$MAX_NUM_SEQS" \
+  --gpu-memory-utilization "$GPU_MEMORY_UTILIZATION" \
+  --host "$HOST" \
+  --port "$PORT" \
+  --dtype auto \
+  --kv-cache-dtype fp8 \
+  --max-model-len "$MAX_LEN" \
+  --async-scheduling \
+  --stream-interval "$STREAM_INTERVAL" \
+  --speculative-config "$SPECULATIVE_CONFIG"
+```
 
-We are especially grateful to Meituan for their strong backing and meaningful contributions, which played a vital role in driving this project forward.
+### Example Usage
 
-This project has also been inspired by many outstanding open-source projects from the LLM community, including [EAGLE](https://github.com/SafeAILab/EAGLE), [BaldEagle](https://github.com/NickL77/BaldEagle), and [TensorRT-Model-Optimizer](https://github.com/NVIDIA/TensorRT-Model-Optimizer) and others. Their contributions and shared knowledge have greatly benefited our work.
-
-## 💡 Special Thanks to Voltage Park
-
-We would like to extend our sincere thanks to [Voltage Park](https://www.voltagepark.com/), our official infrastructure partner. As part of a formal collaboration with the SGLang team, Voltage Park provided critical GPU resources that empowered us to train and evaluate large-scale speculative decoding models efficiently and reliably. This partnership was instrumental in making SpecForge possible. We deeply appreciate Voltage Park’s mission to make cutting-edge AI infrastructure more accessible, and we look forward to continued collaboration as we push the boundaries of open-source LLM serving and optimization.
-
-## 📃 Citation
-
-```bibtex
-@misc{specforge2025,
-  title={SpecForge: Train speculative decoding models effortlessly},
-  author={Shenggui Li, Yikai Zhu, Chao Wang, Fan Yin, Shuai Shi, Yubo Wang, Yi Zhang, Yingyi Huang, Haoshuai Zheng, Yineng Zhang},
-  year={2025},
-  publisher={GitHub},
-  howpublished={\url{https://github.com/sgl-project/specforge}},
-}
+```text
+python test.py \
+  --model-path /path/gpt-oss-120b \
+  --served-model-name gpt-oss \
+  --port 8001 \
+  --base-url-host 127.0.0.1 \
+  --speculative-config '{"method":"eagle3","model":"/path/gpt-oss-120b-eagle3-aimo3","num_speculative_tokens":3,"draft_tensor_parallel_size":1}' \
+  --query "3424*4334+342342+943"
+```
