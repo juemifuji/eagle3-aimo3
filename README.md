@@ -12,7 +12,11 @@ Our code repository is a secondary development based on [SpecForge](https://gith
 
 
 ### Evaluation
-We uploaded the trained model to Hugging Face and compared it against gpt-oss-120b, as shown in the table below.
+We provide a test script to evaluate the acceleration ratio. The test data is sourced from the [International Mathematical Olympiad (IMO)](https://huggingface.co/datasets/Hwilner/imo-answerbench), and the testing environment uses NVIDIA H800 GPUs.
+To run the benchmark:
+```text
+python benchmark.py
+```
 
 | throughput(gpt-oss-120b) | throughput(gpt-oss-120b-eagle3-aimo3) | speedup | concurrency |
 | ------------------------ | ------------------------------------ | ------- | ----------- |
