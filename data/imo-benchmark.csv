@@ -1,0 +1,282 @@
+id,problem,answer
+imo-bench-combinatorics-080,"A $\pm 1$-sequence is a sequence of 2022 numbers $a_{1}, \ldots, a_{2022}$, each equal to either +1 or -1. Additionally, there is a sequence of 3000 numbers $b_{1}, \ldots, b_{3000}$, each equal to either 0 or 2. Determine the largest $C$ so that, for any $\pm 1$-sequence, there exists an integer $k$ and indices $1 \leqslant t_{1}<\ldots<t_{k} \leqslant 2022$ so that $t_{i+1}-t_{i} \leqslant 2$ for all $i$, and
+
+\[
+\left|\sum_{i=1}^{k} a_{t_{i}}\right| \geqslant C
+\]",506
+imo-bench-geometry-083,"A circle passes through vertex $Y$ of triangle $XYZ$, intersects sides $XY$ and $YZ$ at points $P$ and $Q$ respectively, and touches side $XZ$ at its midpoint $R$. The point $S$ on the arc $YQ$ (not containing $P$) is such that $\angle QPS = \angle XZY$. Find $\angle YXZ$ in terms of degree given that triangle $ZPS$ is equilateral.
+",75
+dd7f5e,"Let $\mathcal{F}$ be the set of functions $\alpha \colon \mathbb{Z}\to \mathbb{Z}$ for which there are only finitely many $n \in \mathbb{Z}$ such that $\alpha(n) \neq 0$. 
+
+For two functions $\alpha$ and $\beta$ in $\mathcal{F}$, define their product $\alpha\star\beta$ to be $\sum\limits_{n\in\mathbb{Z}} \alpha(n)\cdot \beta(n)$. Also, for $n\in\mathbb{Z}$, define a shift operator $S_n \colon \mathcal{F}\to \mathcal{F}$ by $S_n(\alpha)(t)=\alpha(t+n)$ for all $t \in \mathbb{Z}$.
+
+A function $\alpha \in \mathcal{F}$ is called \emph{shifty} if 
+\begin{itemize}
+    \item $\alpha(m)=0$ for all integers $m<0$ and $m>8$ and
+    \item There exists $\beta \in \mathcal{F}$ and integers $k \neq l$ such that for all $n \in \mathbb{Z}$
+    \begin{equation*}
+        S_n(\alpha)\star\beta =
+        \begin{cases}
+            1 & n \in \{k,l\} \\
+            0 & n \not \in \{k,l\}
+        \end{cases}
+        \; .
+    \end{equation*}
+\end{itemize}
+How many shifty functions are there in $\mathcal{F}$?",160
+imo-bench-geometry-003,"Given a convex $n$-sided polygon $B_1\ldots B_n$. Let $Q_i$ ($i = 1,\ldots, n$) be points on the boundary of the polygon such that $B_iQ_i$ divides the area of the polygon in half.  Assume that none of the points $Q_i$ coincide with any vertex of the polygon and that these points lie on $k$ sides of the $n$-sided polygon. For a given value of $n$, determine the minimum possible value of $k$.
+",3
+imo-bench-combinatorics-084,"Minh is a student whose birthday is in the year $1997$, so he starts by writing $s$ integer-valued 1997-tuples on a blackboard. After doing that, he can take any two (not necessarily distinct) tuples $\mathbf{v}=\left(v_{1}, \ldots, v_{1997}\right)$ and $\mathbf{w}=\left(w_{1}, \ldots, w_{1997}\right)$ that he has already written, and apply one of the following operations to obtain a new tuple:
+
+\[
+\begin{aligned}
+& \mathbf{v}+\mathbf{w}=\left(v_{1}+w_{1}, \ldots, v_{1997}+w_{1997}\right) \\
+& \mathbf{v} \vee \mathbf{w}=\left(\max \left(v_{1}, w_{1}\right), \ldots, \max \left(v_{1997}, w_{1997}\right)\right)
+\end{aligned}
+\]
+
+and then write this tuple on the blackboard.
+
+It turns out that, in this way, Minh can write any integer-valued 2023-tuple on the blackboard after finitely many steps. What is the smallest possible number $s$ of tuples that he initially wrote?",3
+imo-bench-combinatorics-074,"There are 100 empty boxes $B_{1}, \ldots, B_{100}$ in a row on a table and an unlimited supply of pebbles. Given a positive integer $n$, Alice and Bob play the following game.
+
+In the first round, Alice takes $n$ pebbles and distributes them into the 100 boxes as she wishes. Each subsequent round consists of two steps:
+
+(a) Bob chooses an integer $k$ with $1 \leqslant k \leqslant 99$ and splits the boxes into the two groups $B_{1}, \ldots, B_{k}$ and $B_{k+1}, \ldots, B_{100}$.
+
+(b) Alice picks one of these two groups, adds one pebble to each box in that group, and removes one pebble from each box in the other group.
+
+Bob wins if, at the end of any round, some box contains no pebbles. Find the smallest $n$ such that Alice can prevent Bob from winning.",2600
+imo-bench-geometry-090,"A convex polyhedron has $m$ faces that are all congruent triangles with angles $30^{\circ}, 75^{\circ}$, and $75^{\circ}$. Determine, with proof, the maximum possible value of $m$.
+",44
+imo-bench-number_theory-098,"You have entered a quiz competition. A positive integer $F \ge 2$ is given, and the competition starts with a number $S$ provided by the organizers. In each turn, you look at the number most recently provided by the organizers and choose a divisor or multiple other than 1 to submit. The organizers will then add or subtract 1 from the number you submitted and present it back to you. You win if you reach $F$ within $50$ turns. Find the $50th$ smallest value of $F$ for which you can succeed regardless of the initial number $S$.",93
+imo-bench-combinatorics-073,"In a grand theater, there are $40000$ seats arranged into $200$ rows, each row has $200$ seats to form a $200 \times 200$ seating arrangement. Out of these seats, some seats are reserved and others remain available. The theater organizers want to assign reserved seats following these two strict conditions:
+
+1) No two reserved seats can be in rows that have the same number of reserved seats while also being in columns that have the same number of reserved seats.
+2) There must be two rows that each contain exactly $m$ reserved seats.
+
+What is the largest possible value of $m$ for which such a seating assignment can be created?
+
+",96
+imo-bench-combinatorics-025,"Alice and Bob play a game on a board consisting of one row of 2020 consecutive squares. They take turns placing tiles that cover two adjacent squares, with Alice going first. By rule, a tile must not cover a square that is already covered by another tile. The game ends when no tile can be placed according to this rule. Alice's goal is to maximize the number of uncovered squares when the game ends; Bob's goal is to minimize it. What is the greatest number of uncovered squares that Alice can ensure at the end of the game, no matter how Bob plays?",290
+86e8e5,"Let $n \geq 6$ be a positive integer. We call a positive integer $n$-Norwegian if it has three distinct positive divisors whose sum is equal to $n$. Let $f(n)$ denote the smallest $n$-Norwegian positive integer. Let $M=3^{2025!}$ and for a non-negative integer $c$ define 
+\begin{equation*}
+    g(c)=\frac{1}{2025!}\left\lfloor \frac{2025! f(M+c)}{M}\right\rfloor.
+\end{equation*}
+We can write 
+\begin{equation*}
+    g(0)+g(4M)+g(1848374)+g(10162574)+g(265710644)+g(44636594)=\frac{p}{q}
+\end{equation*}
+where $p$ and $q$ are coprime positive integers. What is the remainder when $p+q$ is divided by $99991$?",8687
+imo-bench-combinatorics-014,"In a board of $125 \times 125$ grids, we pick $k$ unit squares such that every picked square shares vertices with at most $1$ other picked square. Some squares are colored red and some squares are colored blue, where red squares and blue squares satisfy the following condition: any two squares of the same color do not share a side or a vertex. Determine the maximum of $k$.",5292
+imo-bench-geometry-063,"Two externally tangent circles $\Gamma_1$ and $\Gamma_2$ have centers $P_1$ and $P_2$, respectively. A third circle $\Sigma$ passing through $P_1$ and $P_2$ intersects $\Gamma_1$ at $Q$ and $R$ and $\Gamma_2$ at $S$ and $T$, as shown. Suppose that $SQ = 2$, $P_1P_2 = 15$, $RT = 16$, and $SQP_1RTP_2$ is a convex hexagon. Find the area of this hexagon.
+",140
+imo-bench-geometry-025,"Let $XYZ$ be an acute-angled scalene triangle and $P$ be a point inside it such that $\angle XPY  = \angle YPZ = 120^o$. A circle centered at point $Q$ passes through the midpoints of the sides of $XYZ$. For $Y, P, Q$ collinear, find angle $XYZ$  in terms of degree.
+",30
+imo-bench-combinatorics-045,"Two players $A$ and $B$ are playing a game by taking turns writing numbers from the set $\{1, \dots, N\}$ on a blackboard, where $N$ is a positive integer. Player $A$ starts the game by writing the number $1$. If a player writes the number $n$, then the other player can write either $n+1$ or $2n$, provided the number does not exceed $N$. The player who writes the number $N$ wins. We say that $N$ is of type $A$ if player $A$ has a winning strategy, and of type $B$ if player $B$ has a winning strategy. The game board is made of a special type of wood imported from Brazil.
+
+Find the least $N > 400$ such that it is a type B number.",512
+imo-bench-combinatorics-069,"A large $45 \times 45 \times 45$ cube is composed of $45^3$ smaller unit cubes. Each unit cube is painted with one color. For each $45 \times 45 \times 1$ rectangular prism consisting of $n^{2}$ unit cubes (of any of the three possible orientations), we consider the set of distinct colors present in that prism.  A mischievous gnome, known for rearranging things, has decided to play a prank. He rearranges the colors of the unit cubes such that the set of colors in any $45 \times 45 \times 1$ prism in one orientation appears in an $45 \times 45 \times 1$ prism in each of the other two orientations.  Determine the maximal possible number of colors that are present in the large cube after the gnome's antics.",31395
+imo-bench-number_theory-070,"We call a triple $(x, y, z)$ of (not necessarily positive) integers a \textit{good triple} if $y^x z^y x^z$ is a positive prime number. We enumerate good triples as $(x_1, y_1, z_1), (x_2, y_2, z_2), \dots$ in a way that $x_k^2 + y_k^2 + z_k^2 \le x_{k+1}^2 + y_{k+1}^2 + z_{k+1}^2$ holds for all positive integer $k$. Evaluate $x_{200}^2 + y_{200}^2 + z_{200}^2$",18771
+imo-bench-number_theory-057,"Let $b_m b_{m-1}\cdots b_0$ be the base-7 representation of a positive integer $n$ for some positive integer $m$. Let $a_i$ be the number obtained by removing the digit $b_i$ from the base-7 representation of $m$ (read in base 7). Find the number of $n$ that satisfy $n=\sum_{i=0}^{m-1}a_i$.
+",42
+imo-bench-algebra-032,"We call $g: \mathbb{R} \rightarrow \mathbb{R}$ a good function if $g$ satisfies all the following conditions:
+
+(1) For any two distinct real numbers $a, b$, if $g(ab) = 0$, then $g(a) = 0$ or $g(b) = 0$.
+(2) For any two distinct real numbers $a, b$, if $g(ab) \neq 0$, then $$\frac{g(a)-g(b)}{a-b}=\frac{g(a)g(b)}{g(ab)}.$$
+(3) $g(1)=1$
+\\
+Let $S=\{2^a 3^b 5^c 7^d : a,b,c,d\in \mathbb{Z}\}$ and we call $h:S\rightarrow \mathbb{R}$ an essential function if there exists a good function $g$ such that $h(x)=g(x)$ for all $x\in S$. Find the number of essential functions. ",16
+imo-bench-algebra-068,"Find all positive integers $n$ satisfying the following condition.
+
+[Condition] For any positive integer $d \le n$ and a polynomial $Q(x)$ with integer coefficients and of degree less than $d$, there exists a positive integer $k \le n$, and $k + 1$ distinct integers $a_1, \ldots, a_{k+1}$ such that
+\[
+    Q(a_{k+1}) - \sum_{i=1}^k Q(a_i) = a_{k+1}^d - \sum_{i=1}^k a_i^d.
+\]
+",2
+imo-bench-geometry-052,"Triangle $XYZ$ has side lengths $XY=4$, $YZ=5$, and $ZX=6$. Points $P$ and $Q$ are on ray $XY$ with $XY<XP<XQ$. The point $R \neq Z$ is a point of intersection of the circumcircles of $\triangle XZP$ and $\triangle QYZ$ satisfying $PR=2$ and $QR=7$. Then $YQ$ can be expressed as $\tfrac{a+b\sqrt{c}}{d}$, where $a$, $b$, $c$, and $d$ are positive integers such that $a$ and $d$ are relatively prime, and $c$ is not divisible by the square of any prime. Find $a+b+c+d$.
+",32
+imo-bench-combinatorics-061,"A sequence of positive integers $a_1, a_2, \ldots, a_n$ is called a Korean sequence if it satisfies the following conditions:
+\begin{itemize}
+    \item $a_1 < a_2 < \ldots < a_n$
+    \item For each $1 \leq k < n$, we define two sets $A_k = \{a_1, a_2, \ldots, a_k\}$ and $B_k = \{a_{k+1}, a_{k+2}, \ldots, a_n\}$. A partition $(A_k, B_k)$ is called good if the least common multiple of the elements in $A_k$ is equal to the greatest common divisor of the elements in $B_k$.
+\end{itemize}
+Determine the minimum value of $n$ such that there exists a Korean sequence of length $n$ with exactly 2015 good partitions.",3024
+imo-bench-geometry-055,"Let $DEF$ be an acute triangle with circumcircle $\Omega$ and orthocenter $O$. Suppose the tangent to the circumcircle of $\triangle OFE$ at $O$ intersects $\Omega$ at points $P$ and $Q$ with $OD=3$, $OP=2$, $OQ=6$. The area of $\triangle DEF$ can be written as $a\sqrt b$, where $a$ and $b$ are positive integers, and $b$ is not divisible by the square of any prime. Find $a+b$.
+",58
+imo-bench-combinatorics-046,"The Bank of Hanoi issues $n$ different types of coins, numbered from $1$ to $n$. A cashier arranges these coins in a $2004 \times 2004$ matrix. Let $X_i$ be the set of distinct coin types in row $i$, and $Y_j$ the set of distinct coin types in column $j$, for $1 \le i, j \le 2004$. The cashier's arrangement is considered ""harmonious"" if all $X_i$ and $Y_j$ are distinct sets. Find the least integer $n$ such that a harmonious arrangement is possible.",13
+imo-bench-geometry-044,"Given $PQRS$ is a parallelogram. We know that $\angle S = 60^\circ$, $PS = 2$ and $PQ = \sqrt{3} + 1$. Point $N$ is the midpoint of $PS$. Segment $RE$ is the angle bisector of $R$. Find the angle $REQ$ in terms of degree.
+",75
+imo-bench-algebra-015,"Suppose that $g:\mathbb{Z}\to O$, where $O$ is the set of odd integers, satisfies
+$$g(a + g(a) + b)-g(a+b) =  g(a-b)-g(a-g(a)-b)$$
+for all integers $a,b$. Furthermore, we have $g(0)=9, g(1)=27, g(2)=3$, and $g(10)=63$. Find all possible values of $g(2025)$.",8109
+imo-bench-combinatorics-090,"A polyomino is a figure which consists of unit squares joined together by their sides. (A polyomino may contain holes.) Consider a grid of unit square cells which extends to infinity in all directions. Find the greatest positive integer $C$ which satisfies the following condition: For every colouring of the cells of the grid in $36$ colours, there is some polyomino within the grid which contains at most $35$ colours and whose area is at least $C$.
+",2450
+imo-bench-combinatorics-028,"Several positive integers are written on a chalkboard in a row from left to right. A transformation is performed as follows: For every pair of consecutive integers on the chalkboard, the sum of those two numbers is written between them.  After 2013 such transformations, how many times does the number 2013 appear on the chalkboard if the initial numbers written on the chalkboard are 1, 2, 3, ..., 1000?",1198
+imo-bench-combinatorics-062,"Two players, Alice and Bob, play a game in which they take turns choosing positive integers less than or equal to a positive integer $n$. The rules of the game are:
+
+(i) A player cannot choose a number that has been chosen by either player on any previous turn.
+
+(ii) A player cannot choose a number consecutive to any of those the player has already chosen on any previous turn.
+
+(iii) The game is a draw if all numbers have been chosen; otherwise the player who cannot choose a number anymore loses the game.
+
+Alice takes the first turn.  Find the largest value of $n$ such that the game ends in a draw.",6
+imo-bench-combinatorics-031,"Let $\gamma \geq 1$ be a real number. Sun Wukong and the Sea God play a turn-based game on an infinite grid of unit squares. Before the game starts, the Sea God chooses a finite number of cells to be flooded with seawater. Sun Wukong is building a magical barrier, which is a subset of unit edges of the grid (called walls) forming a connected, non-self-intersecting path or loop.  Additionally, there is a magical artifact that randomly generates a finite number of extra walls on the grid, with no specific pattern or distribution.
+
+The game then begins with Sun Wukong moving first. On each of Sun Wukong's turns, he adds one or more walls to the magical barrier, as long as the total length of the barrier is at most $\gamma n$ after his $n$th turn. On each of the Sea God's turns, every cell which is adjacent to an already flooded cell and with no wall between them becomes flooded as well. Sun Wukong wins if the magical barrier forms a closed loop such that all flooded cells are contained in the interior of the loop — hence stopping the flood and saving the world. What is the largest constant $C$ such that for all $\gamma > C$ can Sun Wukong guarantee victory in a finite number of turns no matter how the Sea God chooses the initial cells to flood?",2
+imo-bench-combinatorics-016,"Suppose $X$ is a set with $|X| = 56$. In a Chinese mathematics competition, students are given 15 subsets of $X$.  Find the minimum value of $n$, so that if the cardinality of the union of any 7 of these subsets is greater or equal to $n$, then there exists 3 of them whose intersection is nonempty.",41
+imo-bench-combinatorics-048,"Find the smallest positive integers $n$, for which the numbers in the set $S=\{1,2, \ldots, n\}$ can be colored red and blue, with the following condition being satisfied: the set $S \times S \times S$ contains exactly 2007 ordered triples $(x, y, z)$ such that (i) $x, y, z$ are of the same color and (ii) $x+y+z$ is divisible by $n$. Additionally, find all positive integers $m$ such that $m$ is a multiple of 3.",69
+imo-bench-geometry-009,"A convex $m$-gon $Q$, where $m > 3$, is divided into identical triangles by diagonals that do not intersect within it. For which values of $m$ is it possible for $Q$ to be circumscribed?
+",4
+imo-bench-combinatorics-077,"Players $A$ and $B$ play a game on a blackboard that initially contains 1997 copies of the number 1. In every round, player $A$ erases two numbers $x$ and $y$ from the blackboard, and then player $B$ writes one of the numbers $x+y$ and $|x-y|$ on the blackboard. Additionally, there is a coin that is flipped before every round. If the coin lands heads, player $B$ is forced to write $x+y$ and if the coin lands tails player $B$ is forced to write $|x-y|$. The game terminates as soon as, at the end of some round, one of the following holds:
+
+(1) one of the numbers on the blackboard is larger than the sum of all other numbers;
+
+(2) there are only zeros on the blackboard.
+
+Player $B$ must then give as many cookies to player $A$ as there are numbers on the blackboard. Player $A$ wants to get as many cookies as possible, whereas player $B$ wants to give as few as possible. Determine the number of cookies that $A$ receives if both players play optimally.",8
+imo-bench-algebra-080,"Suppose that the polynomials $f(x)$ and $g(x)$ with integer coefficients satisfy the following conditions:
+
+[Condition 1] Define integer sequences $(a_n)_{n \ge 1}$ and $(b_n)_{n \ge 1}$ by $a_1 = 2024$ and
+\[
+    b_n = f(a_n), \quad a_{n+1} = g(b_n)
+\]
+for $n \ge 1$. Then for any positive integer $k$, there exists some non-zero term of $(a_n)$ or $(b_n)$ that is divisible by $k$.
+
+[Condition 2] $2025\le f(0), g(0) \le 10000$.
+
+Find the maximum possible value of $f(0)-g(0)$",3988
+imo-bench-combinatorics-087,"An and Bình are two Vietnamese high school students studied in the Math specialized class at Phổ Thông Năng Khiếu. As part of their Math Olympiad training, they play the following games to study combinatorics.
+
+A 0-1 sequence of length $4096$ is given. An can pick a member from the sequence, and reveal it (its place and its value) to Bình. Find the largest number $s$ for which Bình can always pick $s$ members of the sequence, and guess all their values correctly.
+
+An and Bình can discuss a strategy before the game with the aim of maximizing the number of correct guesses of Bình. The only information Bình has is the length of the sequence and the member of the sequence picked by An.",13
+imo-bench-combinatorics-085,"Evan fills the fields of an $78 \times 78$ board with numbers from 1 to $6084$, each number being used exactly once. She then counts the total number of good paths on the board. A good path is a sequence of fields of arbitrary length (including 1) such that:
+
+(i) The first field in the sequence is one that is only adjacent to fields with larger numbers, and also one that has an even row number and an even column number.
+
+(ii) Each subsequent field in the sequence is adjacent to the previous field,
+
+(iii) The numbers written on the fields in the sequence are in increasing order.
+
+Two fields are considered adjacent if they share a common side. Find the smallest possible number of good paths Alice can obtain.",12013
+imo-bench-number_theory-027,"Find the largest $n$ for which there exist positive integers $x_1, \dots, x_n$ satisfying the following condition:
+(Condition) For any $2 \leq i \leq n-1$, $x_{i+1}x_{i-1} + x_{i+1} + x_{i-1} = x_i^2$.
+",4
+imo-bench-combinatorics-049,"In a research lab, scientists are studying the spread of a newly discovered bacteria on a $64 \times 64$ square petri dish. The dish is divided into small square sections, each of which is a $1 \times 1$ square and is either infected (black) or sterile (white). Initially, there are exactly $k$ infected sections, and the rest are sterile. Scientists observe that the bacteria spread according to two specific growth rules:
+
+1) If a $2 \times 2$ square section has exactly three infected sections, the last sterile section gets infected.
+2) If a $2 \times 2$ square has exactly two infected sections, the infection mutates—infected sections become sterile, and sterile sections become infected.
+The researchers want to determine the smallest number of initially infected sections, $k$, such that no matter how the infection starts, it will always be possible to spread the bacteria to the entire dish after a sequence of growth and mutation cycles.
+
+What is the smallest such $k$ that guarantees a full infection?",1057
+imo-bench-algebra-039,"Let $p, q, r, s$ be constants such that the equation $py^3 + qy^2 + ry + s = 0$ has three distinct real roots. Find all possible values for the number of distinct real roots of the equation
+$$\left(pz^{3}+qz^{2}+rz+s\right)(6pz+2q)=\left(3pz^{2}+2qz+r\right)^{2}.$$
+",2
+imo-bench-combinatorics-010,"Two players, Boris and Natasha, play the following game on an infinite grid of unit squares, all initially colored white. The players take turns starting with Boris. On Boris's turn, Boris selects one white unit square and colors it blue. On Natasha's turn, Natasha selects two white unit squares and colors them red. The players alternate until Boris decides to end the game. At this point, Boris gets a score, given by the number of unit squares in the largest simple polygon containing only blue unit squares and some yellow unit squares. What is the largest score Boris can guarantee?",4
+imo-bench-combinatorics-033,"Let $n \geq 2$ be an integer. An $n \times n$ board is initially empty. Each minute, you may perform one of four moves:
+If there is an L-shaped tromino region of three cells without stones on the board (see figure; rotations not allowed), you may place a stone in each of those cells.
+If all cells in a column have a stone, you may remove all stones from that column.
+If all cells in a row have a stone, you may remove all stones from that row.
+
+Find the largest positive integer $n \leq 500$ such that it is possible that, after some non-zero number of moves, the board has no stones.",498
+imo-bench-number_theory-028,"Given a positive integer $n$, there exists an integer $a$ such that the sequence $\{a_k\}$ defined by $a_0 = a$ and $a_k = \frac{a_{k-1}}{k} + k^{n-1}$ consists only of integers. Find the possible values of the remainder when $n$ is divided by 3.
+",2
+imo-bench-combinatorics-089,"We colored the $10000$ unit squares of an $100 \times 100$ square lattice such that in each $2\times 2$ square, at least two of the four unit squares have the same color. What is the largest number of colors we could have used?
+",5099
+imo-bench-combinatorics-020,"Suppose there are $40$ professional baseball teams participating in a tournament. In each round of the game, we will divide the $40$ teams into $20$ pairs, and each pair plays the game at the same time. After the tournament, it is known that every two teams have played at most one game. Find the smallest positive integer $a$, so that we can arrange a schedule satisfying the above conditions, and if we take one more round, there is always a pair of teams who have played in the game.",21
+imo-bench-number_theory-021,"For a positive integer $n$, we call $g:\mathbb{Z}\rightarrow \mathbb{Z}$ a \textif{$n$-good function} if $g(1)=1$ and for any two distinct integers $a$ and $b$, $g(a)-g(b)$ divides $a^n -b^n$. We call a positive integer $n$ an \textit{exotic integer} if the number of $n$-good functions is twice of an odd integer. Find $132$th exotic integer.
+
+",69169
+imo-bench-number_theory-017,"$\alpha$ is a real number that is not rational, and $k$ is a positive integer. A pair of positive integers $(m, n)$ is called ""pretty"" if $m\lceil n\alpha \rceil - n \lfloor m\alpha \rfloor =k$. A pretty pair $(m, n)$ is called ""cool"" if neither $(m-n, n)$ nor $(m, n-m)$ are pretty pairs. Find the number of cool pairs when $k=2310$.
+",6912
+imo-bench-combinatorics-076,"The Lucas numbers $L_{0}, L_{1}, L_{2}, \ldots$ are defined inductively by $L_{0}=2, L_{1}=1$, and $L_{n+1}=L_{n}+L_{n-1}$ for $n \geqslant 1$. The Fibonacci numbers $F_{0}, F_{1}, F_{2}, \ldots$ are defined inductively by $F_{0}=0, F_{1}=1$, and $F_{n+1}=F_{n}+F_{n-1}$ for $n \geqslant 1$. Determine the smallest size of a set $S$ of integers such that for every $k=2,3, \ldots, 125$ there exist some $x, y \in S$ such that $x-y=F_{k}$. Also, there exist some $a, b \in T$ for some set $T$ such that $a-b = L_{100}$.",64
+imo-bench-geometry-068,"In $\triangle XYZ$ with side lengths $XY=13$, $YZ=14$, and $ZX=15$, let $N$ be the midpoint of $\overline{YZ}$. Let $R$ be the point on the circumcircle of $\triangle XYZ$ such that $N$ is on $\overline{XR}$. There exists a unique point $S$ on segment $\overline{XN}$ such that $\angle RYS = \angle RZS$. Then $XS$ can be written as $\frac{a}{\sqrt{b}}$, where $a$ and $b$ are relatively prime positive integers. Find $a+b$.
+",247
+imo-bench-number_theory-002,"Find the number of all positive integers $2\leq m \leq 2000$ that satisfy the following condition: For any $m$ distinct positive integers $(n_1, \ldots, n_m)$, at least one of the following two conditions holds: $n_1 + \ldots + n_m$ is a multiple of $m$, or there exists a permutation $(k_1, \ldots, k_m)$ such that $k_1 + 2k_2 + \ldots + mk_m$ is a multiple of $m$.
+",1009
+imo-bench-number_theory-008,"Does there exist a positive integer $n$ satisfying the following condition? If so, find the smallest such $n$.
+
+(Condition) There exist infinitely many ordered $n$-tuples of positive rational numbers $(x_1, \dots, x_n)$ such that both $\sum_{i=1}^n i \cdot x_i$ and $\frac{1}{x_1 + \dots + x_n} + \frac{1}{x_2 + \dots + x_n} + \dots + \frac{1}{x_n}$ are positive integers.
+",3
+imo-bench-number_theory-023,"Find the smallest positive integer $m$ that satisfies the following condition:
+(Condition) There exist $m$ distinct positive integers $a_1, \dots, a_m$ such that $(1-\frac{1}{a_1})\cdots (1-\frac{1}{a_m}) = \frac{42}{2010}$.
+",48
+imo-bench-combinatorics-029,"We call a rectangle of the size $1 \times 2$ a domino. Rectangle of the $2 \times 3$ removing two opposite (under center of rectangle) corners we call S-tetramino. These figures can be rotated. A rectangle of the size $2 \times 4$ removing two opposite (under center of rectangle) corners we call L-hexamino. These figures can be rotated.
+
+It requires to tile rectangle of size $1008  \times 1010$ by using dominoes and S-tetraminoes. What is the minimal number of dominoes should be used?",506
+imo-bench-combinatorics-057,"In the plane, 2025 red points and 2026 blue points are marked so that no three of the marked points are collinear. One needs to draw $k$ lines not passing through the marked points and dividing the plane into several regions. The goal is to do it in such a way that no region contains points of both colors.
+
+Find the minimal value of $k$ such that the goal is attainable for every possible configuration of 4051 points.",2025
+imo-bench-combinatorics-100,"Grogg and Winnie are playing a game using a deck of $50$ cards numbered $1$ through $50$. They take turns with Grogg going first. On each turn a player chooses a card from the deck—this choice is made deliberately, not at random—and then adds it to one of two piles (both piles are empty at the start of the game). After all $50$ cards are in the two piles, the values of the cards in each pile are summed, and Winnie wins the positive difference of the sums of the two piles, in dollars. (For instance, if the first pile has cards summing to $510$ and the second pile has cards summing to $765$, then Winnie wins $ \$255$.) Winnie wants to win as much as possible, and Grogg wants Winnie to win as little as possible. If they both play with perfect strategy, find (with proof) the amount that Winnie wins.
+",75
+imo-bench-combinatorics-081,"The Bank of Berlin issues coins made out of two types of metal: aluminium (denoted $A$ ) and copper (denoted $C$ ). Sophia has $255$ aluminium coins, and $255$ copper coins, and arranges her $510$ coins in a row in some arbitrary initial order.  Given a fixed positive integer $k \leqslant 510$, she repeatedly performs the following operation: identify the largest subsequence containing the $k$-th coin from the left which consists of consecutive coins made of the same metal, and move all coins in that subsequence to the left end of the row. For example, if there are $4$ aluminum coins and $4$ copper coins and $k=4$, the process starting from the configuration $A A C C C A C A$ would be
+
+\[
+A A C C C A C A \rightarrow C C C A A A C A \rightarrow A A A C C C C A \rightarrow C C C C A A A A \rightarrow \cdots
+\]
+
+In addition to aluminium and copper coins, Sophia also has a few silver coins that she keeps separate from her aluminium and copper coins.
+
+Let $a$ and $b$ be the smallest and largest positive integer $k$ with $1 \leqslant k \leqslant 510$ such that for every initial configuration, at some point of the process there will be at most one aluminium coin adjacent to a copper coin. Find the product $ab$.",97665
+imo-bench-algebra-100,"Find number of triples $(x,y,z)$ of real numbers satisfying
+\[
+x^2 + y^2 + z^2 = xy^3 + yz^3 + zx^3 = 3.
+\]
+",8
+imo-bench-number_theory-086,"Positive integers $M$ and $N$ satisfy the following conditions:
+
+(1) $M$ is a 1000-digit number, and none of its digits are 0.
+(2) The decimal expansion of $\left \lfloor \frac{M}{N} \right\rfloor$ contains the digit 0 exactly $A$ times. (The leading digit of the decimal expansion is not 0.)
+
+Find the maximum possible value of $A$.
+",939
+imo-bench-geometry-048,"Let $ XYZ $ be a triangle with incenter $ J $. Let segment $ XJ $ meets the incircle of triangle $ XYZ $ at point $ K $. Suppose that the angle created by line $ YK $ and line $ XZ $ is $90^\circ$. Let $ R $ be a point such that $ \angle YRX = \angle RXJ = 90^\circ $. Point $ S $ lies on segment $ YK $ such that the circumcircle of triangle $ XYS $ is tangent to line $ YJ $. Point $ T $ lies on line $ RS $ such that $ \angle JXT = \angle TXZ $. Let $\gamma$ be the value of $\angle XTR$ in terms of degree, compute $\frac{\gamma}{3}$.
+",15
+641659,"Let $ABC$ be a triangle with $AB \neq AC$, circumcircle $\Omega$, and incircle $\omega$. Let the contact points of $\omega$ with $BC$, $CA$, and $AB$ be $D$, $E$, and $F$, respectively. Let the circumcircle of $AFE$ meet $\Omega$ at $K$ and let the reflection of $K$ in $EF$ be $K'$. Let $N$ denote the foot of the perpendicular from $D$ to $EF$. The circle tangent to line $BN$ and passing through $B$ and $K$ intersects $BC$ again at $T \neq B$. 
+    
+Let sequence $(F_n)_{n \geq 0}$ be defined by $F_0 = 0$, $F_1 = 1$ and for $n \geq 2$, $F_n = F_{n-1} + F_{n-2}$. Call $ABC$ $n$\emph{-tastic} if $BD = F_n$, $CD = F_{n+1}$, and $KNK'B$ is cyclic. Across all $n$-tastic triangles, let $a_n$ denote the maximum possible value of $\frac{CT \cdot NB}{BT \cdot NE}$. Let $\alpha$ denote the smallest real number such that for all sufficiently large $n$, $a_{2n} < \alpha$. Given that $\alpha = p + \sqrt{q}$ for rationals $p$ and $q$, what is the remainder when $\left\lfloor p^{q^p} \right\rfloor$ is divided by $99991$?",57447
+imo-bench-number_theory-076,"(a) Show that there exists a degree 3 monic polynomial $P(x)$ with integer coefficients such that for an integer $n$, $P(n)$ is a square of an integer if and only if $n = 2024$ or $2025$.
+
+(b) For such a polynomial $P(x)$ in (a), find all possible values for $P(2024)P(2025)$.
+",0
+imo-bench-algebra-092,"Find the smallest positive integer $n$ such that there exist real numbers $x_1, \ldots, x_n$ between $-1$ and 1 satisfying
+\[
+    \sum_{i=1}^n x_i^2 + \left(\sum_{i=1}^n x_i\right)^2 = 20, \quad |x_1 + \ldots + x_n| < 1.
+\]
+",21
+imo-bench-geometry-026,"A line intersects a segment $PQ$ at point $R$. What is the maximum number of points $Y$ on this line such that one of the angles $\angle PYR$ and $\angle QYR$ is equal to half of the other?
+",4
+imo-bench-combinatorics-067,"Suppose we have a $194 \times 194$ board and we want to mark some cells on this board. Determine the smallest positive integer $k$ such that it is possible to mark $k$ cells on the board in a way that there exists a unique partition of the board into $1 \times 2$ and $2 \times 1$ dominoes, where none of the dominoes contains two marked cells.",194
+imo-bench-algebra-055,"Consider a sequence of positive integers $x_1, x_2, \ldots$ satisfying the following condition:
+\[
+    (x_{2n + d} - x_{n + d} - n)(x_{2n + d} - x_n - n - d) = 0
+\]
+for all integers $n \ge 32$ and $d \ge 1024$. Find the value of the largest possible positive integer $n$ for which $x_{n + 1} - x_n \neq 1$.",2079
+imo-bench-combinatorics-027,"Two rational numbers \(\tfrac{m}{n}\) and \(\tfrac{n}{m}\) are written on a blackboard, where \(m\) and \(n\) are relatively prime positive integers.  At any point, Lin may pick two of the numbers \(x\) and \(y\) written on the board and write either their arithmetic mean \(\tfrac{x+y}{2}\) or their harmonic mean \(\tfrac{2xy}{x+y}\) on the board as well. For a pair \((m,n)\) such that Lin can write 1 on the board in finitely many steps, find the largest value of $m+n$ knowing that $m+n < 3000$.",2048
+imo-bench-geometry-078,"Let $XYZ$ be a triangle. How many points $Q$ on segment $YZ$ are there satisfying the following property: If $A$ and $B$ are the intersections of line $XQ$ with the common external tangent lines of the circumcircles of triangles $XQY$ and $XQZ$, then\[\left(\frac{XQ}{AB}\right)^2+\frac{QY\cdot QZ}{XY\cdot XZ}=1\] ?
+",2
+imo-bench-combinatorics-032,"A classroom contains 68 pairs of nonzero integers. Suppose that for each positive integer $k$ at most one of the pairs $(k, k)$ and $(-k, -k)$ is written on the classroom board.  A student erases some of the 136 integers, subject to the condition that no two erased integers may add to 0. The student then scores one point for each of the 68 pairs in which at least one integer is erased. Additionally, the classroom has another broken whiteboard, and some integers might be invisible. Determine, with proof, the largest number $N$ of points that the student can guarantee to score regardless of which 68 pairs have been written on the board.",43
+imo-bench-combinatorics-054,"Consider a checkerboard consisting of $38$ by $38$ unit squares. At the midpoints of some of these unit squares, there is an ant. At time 0, each ant starts moving with speed 1 parallel to some edge of the checkerboard. When two ants moving in opposite directions meet, they both turn $90^{\circ}$ clockwise and continue moving with speed 1. When more than two ants meet, or when two ants moving in perpendicular directions meet, the ants continue moving in the same direction as before they met. When an ant reaches one of the edges of the checkerboard, it falls off and will not re-appear.  Also, there are some spiders on the checkerboard that do not move at all.
+
+Considering all possible starting positions, determine the latest possible moment at which the last ant falls off the checkerboard or prove that such a moment does not necessarily exist.",56
+imo-bench-algebra-026,"Suppose that a function $f:\mathbb{Q}\rightarrow\mathbb{F}_2$ satisfies $f(r)+f(r')=1$ for all distinct rational numbers $r, r'$ satisfying either $r+r'=0$ or $r+r'=1$ or $rr'=1$. Suppose further that $f(11/3)=1$. Evaluate
+$f(7/3)+f(11/4)+f(2024/5)+f(109/11)+f(3/71)+f(5/204)$",1
+imo-bench-geometry-002,"Given right triangle $ XYZ$ with hypothenuse $ XZ$ and $ \angle X = 50^{\circ}$. Points $ P$ and $ Q$ on the side $ YZ$ are such that $ \angle PXZ = \angle QXY = 10^{\circ}$. Compute the ratio $2 \times YQ/ZP$.
+",4
+imo-bench-geometry-064,"Given $\triangle XYZ$ and a point $Q$ on one of its sides, call line $m$ the splitting line of $\triangle XYZ$ through $Q$ if $m$ passes through $Q$ and divides $\triangle XYZ$ into two polygons of equal perimeter. Let $\triangle XYZ$ be a triangle where $YZ = 219$ and $XY$ and $XZ$ are positive integers. Let $R$ and $S$ be the midpoints of $\overline{XY}$ and $\overline{XZ}$, respectively, and suppose that the splitting lines of $\triangle XYZ$ through $R$ and $S$ intersect at $30^{\circ}$. Find the perimeter of $\triangle XYZ$.
+",459
+imo-bench-combinatorics-093,"Let $s$ be positive integers such that $s<5625$. Initially, one cell out of an $n \times n$ grid is coloured green. On each turn, we pick some green cell $c$ and colour green some $s$ out of the $5625$ cells in the $75 \times 75$ square centred at $c$. No cell may be coloured green twice. We say that $s$ is sparse if there exists some positive number $C$ such that, for every positive integer $n$, the total number of green cells after any number of turns is always going to be at most $Cn$. Find the least sparse integer $s$.
+",4181
+imo-bench-algebra-052,"Find the minimal $d$ satisfying the following property:
+
+For any sequence of integers $x_1, x_2, \ldots, x_n$ satisfying
+\[
+    0 \le x_i \le 100, \quad \sum_{i=1}^n x_i \ge 1810
+\]
+for all $i = 1, 2, \ldots, n$, there exists a subset $I$ of $\{1,2, \ldots, n\}$ such that
+\[
+    \left| \sum_{i \in I} x_i - 1810 \right| \le d.
+\]",48
+imo-bench-combinatorics-030,"A cube with size $18 \times 18 \times 18$ consists of $5832$ unit cubes, all colored white. Anton and Berta play a game on this cube. Anton chooses some pillars with size $1\times 1\times 18$ such that no two pillars share a vertex or side, and turns all chosen unit cubes to black. Berta is allowed to choose some unit cubes and ask Anton their colors. In addition, Anton also tells Berta that he painted at least two pillars. How many unit cubes, at least, that Berta need to choose so that for any answer from Anton, Berta can always determine the black unit cubes?",486
